@@ -1,5 +1,3 @@
-# Golang place
-
 ## Environment
 
 Here is the environment I will use during those trainings and how to setup the place.
@@ -25,3 +23,4 @@ This will:
 
 > [!TIP]
 > This setup is for your current user. You will have to modify the script to expand to global scope
+
