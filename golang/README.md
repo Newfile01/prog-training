@@ -1,5 +1,4 @@
-# <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.-wxFAYywSfCNVdjeBnx9TAHaHa%3Fpid%3DApi&f=1&ipt=e69bb255b03025bbe5c70dcd415abaf4fbbddf7a1092d8b80bd79a5e15ce6cfc&ipo=images" alt="Go Icon" width="140" height="100" display="inline" > Golang Place
-
+# Golang Place
 
 ## Environment
 
@@ -10,6 +9,18 @@ Go 1.26.3
 # Download & execute script .._install.sh
 
 I made a little install script to automate Go install :
+
+You can use this commande :
+
+```bash
+go install golang.org/x/website/tour@latest
+chmod ~/go/bin/tour
+~/go/bin/tour
+```
+
+It download and install Go in latest version, plus it place a *tour* binary in $GOPATH's bin directory to be ready up to start and try Golang immerdiatly.
+
+Or use the script I just created
 
 ```bash
 curl -LO https://github.com/Newfile01/prog-training/blob/main/golang/go-env_install.sh
@@ -27,3 +38,4 @@ This will:
 > [!NOTE]
 > This setup is for your current user. You will have to modify the script to expand to global scope
 
+You'll need to create to create go/ directory with the right sub-directories to start at $GOPATH path (use `go env` to get it)

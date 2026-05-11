@@ -34,7 +34,7 @@ command -v go >/dev/null 2>&1 && echo "✅ Go added to \$PATH"
 go version >/dev/null 2>&1 && echo "✅ Go OK" || echo "❌ Go absent"
 
 # Clean directory
-sudo rm -rf /usr/local/go1.26.3.linux-amd64.tar.gz
+if [ -f "/usr/local/go1.26.3.linux-amd64.tar.gz" ]; then sudo rm -rf /usr/local/go1.26.3.linux-amd64.tar.gz; fi
 
 # Refresh shell
 source ~/.bashrc
