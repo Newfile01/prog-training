@@ -295,37 +295,3 @@ func main() {
 	fmt.Println("Go rules?", Truth)
 }
 ```
-
-
-## Exercices : Loops and Functions
-
-Essai de racine carrée avec accentuation de la précision sur 10 passes :
-
-```go
-package main
-
-import (
-	"fmt"
-)
-
-func Sqrt(x float64) (z float64) {
-	z = 1.0
-	for i := 1; i <= 10; i++ {
-		fmt.Printf("(%v) %v\n", i, z)
-		z -= (z*z-x)/(2*z)
-	}
-	return
-}
-
-func main() {
-	fmt.Println(Sqrt(2))
-}
-```
-
-En changeant la condition de la boucle pour qu'elle s'arrête lorsque les changements deviennent insiginfiants :
-
-```go
-
-```
-
-
