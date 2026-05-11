@@ -2,8 +2,8 @@
 set -e
 
 # Download and verify checksum
-curl -LO https://go.dev/dl/go1.26.3.linux-amd64.tar.gz
-if [ "$(sha256sum go1.26.3.linux-amd64.tar.gz | cut -d' ' -f1)" = "2b2cfc7148493da5e73981bffbf3353af381d5f93e789c82c79aff64962eb556" ]; then
+curl -LO --output-dir /usr/local https://go.dev/dl/go1.26.3.linux-amd64.tar.gz
+if [ "$(sha256sum /usr/local/go1.26.3.linux-amd64.tar.gz | cut -d' ' -f1)" = "2b2cfc7148493da5e73981bffbf3353af381d5f93e789c82c79aff64962eb556" ]; then
     echo "✅ Valid file"
 else
     echo "❌ Invalid checksum"
@@ -12,16 +12,16 @@ fi
 
 # Remove old & Download new Go compilator
 sudo rm -rf /usr/local/go
-sudo mv go1.26.3.linux-amd64.tar.gz /usr/local/go
+
 # Test
-if [ -f "/usr/localgo1.26.3.linux-amd64.tar.gz" ]; then 
+if [ -f "/usr/local/go1.26.3.linux-amd64.tar.gz" ]; then 
     echo "✅ File downloaded"
 else 
     echo "❌ File missing"
     exit 1
 fi
 
-sudo tar -C /usr/local -xzf /usr/localgo1.26.3.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf /usr/local/go1.26.3.linux-amd64.tar.gz
 
 
 
@@ -32,3 +32,9 @@ command -v go >/dev/null 2>&1 && echo "✅ Go added to \$PATH"
 
 # Test
 go version >/dev/null 2>&1 && echo "✅ Go OK" || echo "❌ Go absent"
+
+# Clean directory
+sudo rm -rf /usr/local/go1.26.3.linux-amd64.tar.gz
+
+# Refresh shell
+source ~/.bashrc

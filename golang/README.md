@@ -4,6 +4,19 @@
 
 Here is the environment I will use during those trainings and how to setup the place.
 
+Go 1.26.3
+
+# Download & execute script .._install.sh
+
+I made a little install script to automate Go install :
+
+```bash
+curl -LO https://github.com/Newfile01/prog-training/blob/main/golang/go-env_install.sh
+chmod +x go-env_install.sh
+sudo sh go-env_install.sh
+```
+
+
 ```bash
 #!/bin/bash
 set -e
@@ -21,7 +34,7 @@ fi
 sudo rm -rf /usr/local/go
 sudo mv go1.26.3.linux-amd64.tar.gz /usr/local/go
 # Test
-if [ -f "/usr/localgo1.26.3.linux-amd64.tar.gz" ]; then 
+if [ -f "/usr/local/go1.26.3.linux-amd64.tar.gz" ]; then 
     echo "✅ File downloaded"
 else 
     echo "❌ File missing"
@@ -39,4 +52,10 @@ command -v go >/dev/null 2>&1 && echo "✅ Go added to \$PATH"
 
 # Test
 go version >/dev/null 2>&1 && echo "✅ Go OK" || echo "❌ Go absent"
+
+# Clean directory
+sudo rm -rf /usr/local/go1.26.3.linux-amd64.tar.gz
+
+# Refresh shell
+source ~/.bashrc
 ```
