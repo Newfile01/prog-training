@@ -23,5 +23,5 @@ This will:
 - Add Go to $PATH for completion
 - Test & cleanup useless files
 
-> [! NOTE ]
+> [!TIP]
 > This setup is for your current user. You will have to modify the script to expand to global scope
