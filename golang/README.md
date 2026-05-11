@@ -1,3 +1,6 @@
+# <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.-wxFAYywSfCNVdjeBnx9TAHaHa%3Fpid%3DApi&f=1&ipt=e69bb255b03025bbe5c70dcd415abaf4fbbddf7a1092d8b80bd79a5e15ce6cfc&ipo=images" alt="Go Icon" width="140" height="100" display="inline" > Golang Place
+
+
 ## Environment
 
 Here is the environment I will use during those trainings and how to setup the place.
@@ -21,6 +24,6 @@ This will:
 - Add Go to $PATH for completion
 - Test & cleanup useless files
 
-> [!TIP]
+> [!NOTE]
 > This setup is for your current user. You will have to modify the script to expand to global scope
 
