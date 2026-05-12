@@ -1,0 +1,46 @@
+version: "2"
+linters:
+  enable:
+    - dupl
+    - ginkgolinter
+    - goconst
+    - gocyclo
+    - gosec
+    - misspell
+    - nakedret
+    - revive
+    - unconvert
+    - unparam
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - revive
+        text: should not use dot imports
+        source: ginkgo|gomega
+      - linters:
+          - gosec
+        text: G110|G601|G404|G204|G306
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+  settings:
+    revive:
+      rules:
+        - name: var-naming
+          disabled: true
+formatters:
+  enable:
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$

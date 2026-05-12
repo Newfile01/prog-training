@@ -23,7 +23,11 @@ fi
 
 sudo tar -C /usr/local -xzf /usr/local/go1.26.3.linux-amd64.tar.gz
 
-
+# Persist PATH
+if ! grep -q "/usr/local/go/bin" "$HOME/.profile"; then
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> "$HOME/.profile"
+    echo "✅ PATH ajouté à ~/.profile"
+fi
 
 # Add to $PATH (user), add to $HOME/.profile or /etc/profile for wide
 export PATH=$PATH:/usr/local/go/bin
