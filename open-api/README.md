@@ -170,3 +170,5 @@ components:
 security:
   - apiKey: []
 ```
+
+Une version plus complète avec quelques corrections ressemblerait à ceci : [Exemple corrigé et amélioré](./design-first-try.yaml)
