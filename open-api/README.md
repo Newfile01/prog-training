@@ -7,7 +7,9 @@ Source : [LFE1011 - Cours sur les fondamentaux d'OpenAPI](https://trainingportal
 Ce cours explique l'origine des APIs et celle d'OpenAPI (notamment Swagger, en 2015)
 Il permet de comprendre les spécifications établies dans le **langage de description d'API** fournit par l'OpenAPI Initiative supportée par la Linux Fundation.
 
-Il permet de comprendre comment une API se construit, quels sont les éléments qui doivent être présents et ocmment les articuler.
+D'autres langages de description existent comme [RAML](https://raml.org/) ou [API Blueprint](https://apiblueprint.org/). 
+
+Le cours [LFE1011](https://trainingportal.linuxfoundation.org/learn/course/) permet de comprendre comment une API se construit, quels sont les éléments qui doivent être présents et ocmment les articuler.
 
 Le standard OpenAPI est un langage de description d'API permettant d'établir des normes de conception des APIs, d'implémentation des objets, de compatibilité de sécurité et autre. Il est fortement lié au protocole HTTP et au style architecturale REST permettant aux fournisseurs d'API de faire reposer leur produits sur des infrastructures largement déployées, gratuites, et demandant peu d'adaptation de leur part pour permettre l'accès à leurs utilisateurs. Cependant, ce n'est pas le seul protocole permettant l'usage d'API au travers du standard OpenAPI. La forme évoquée précédemment (HTTP+REST) concerne ce qui est appelée communément les APIs Web, il en existe d'autres.
 
@@ -52,9 +54,7 @@ La sécurité définie dans OpenAPI n'est pas exhaustive et ne suit que certains
 
 <div align="center">
   <img src="images/openapi_security.jpg" alt="Imbrication des objets de sécurité" style="max-width: 100%; height: auto;" >
-</div>
-
-D'autres langages de description existent comme [RAML](https://raml.org/) ou [API Blueprint](https://apiblueprint.org/).  
+</div> 
 
 
 ## Méthodes d'utilisation
