@@ -30,8 +30,9 @@ Une autre caractéristiques remarquable est l'utilisation de langage de notation
 
 Au travers de ce cours il est plus facile de se représenter comment il est possible de décrire un composant logiciellement et de permettre une interaction avec celui-ci.
 
-<img src="images/openapi_construction.jpg" alt="Imbrication des objets" width="600" height="400">
-
+<div align="center">
+  <img src="images/openapi_construction.jpg" alt="Imbrication des objets" style="max-width: 100%; height: auto;" >
+</div>
 ## Features
 
 Des outils comme [Redoc](https://github.com/Redocly/redoc) permettent de générer des documentation directement à partir d'une descrption ou du code d'une API.
@@ -48,7 +49,9 @@ La sécurité définie dans OpenAPI n'est pas exhaustive et ne suit que certains
 - [Mutual TLS](https://datatracker.ietf.org/doc/html/rfc8120)
 - [OAuth](https://datatracker.ietf.org/doc/html/rfc5849) (qui doit être implémentée par le fournisseur, OpenApi fourni simplement les bases)
 
-<img src="images/openapi_security.jpg" alt="Imbrication des objets de sécurité" width="600" height="400">
+<div align="center">
+  <img src="images/openapi_security.jpg" alt="Imbrication des objets de sécurité" style="max-width: 100%; height: auto;" >
+</div>
 
 D'autres langages de description existent comme [RAML](https://raml.org/) ou [API Blueprint](https://apiblueprint.org/).  
 
