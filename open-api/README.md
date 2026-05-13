@@ -33,6 +33,7 @@ Au travers de ce cours il est plus facile de se représenter comment il est poss
 <div align="center">
   <img src="images/openapi_construction.jpg" alt="Imbrication des objets" style="max-width: 100%; height: auto;" >
 </div>
+
 ## Features
 
 Des outils comme [Redoc](https://github.com/Redocly/redoc) permettent de générer des documentation directement à partir d'une descrption ou du code d'une API.
