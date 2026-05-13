@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Source : [LFE1011 - Cours sur les fondamentaux d'OpenAPI](https://trainingportal.linuxfoundation.org/learn/course/openapi-fundamentals-lfel1011/introducing-openapi/introduction?page=1)
+Source : [LFE1011 - Cours sur les fondamentaux d'OpenAPI](https://trainingportal.linuxfoundation.org/learn/course/openapi-fundamentals-lfel1011/introducing-openapi/introduction?page=1) - [Repo GitHub](https://github.com/lftraining/LFELL1011-resources.git)
 
 Ce cours explique l'origine des APIs et celle d'OpenAPI (notamment Swagger, en 2015)
 Il permet de comprendre les spécifications établies dans le **langage de description d'API** fournit par l'OpenAPI Initiative supportée par la Linux Fundation.
@@ -62,7 +62,7 @@ La sécurité définie dans OpenAPI n'est pas exhaustive et ne suit que certains
 2 approches existent pour construire une API :
 
 - Méthode conceptuelle : On définit le design dans un premier temps, la description avant le codage
-- Méthode "code-first" : Où on structure le code d'abord avant de revenir sur le design
+- Méthode "code-first" : Où on structure le code d'abord avant de revenir sur le design, permet notament l'emploi de framework avant de transformer le code en description OpenAPI
 
 La plus répandue est la méthode conceptuelle car elle permet notamment de standardiser une APÏ
 
@@ -172,3 +172,106 @@ security:
 ```
 
 Une version plus complète avec quelques corrections ressemblerait à ceci : [Exemple corrigé et amélioré](./design-first-try.yaml)
+
+---
+
+## Approche "code-first"
+
+L'approche code first a en réalité été mise en place avant l'approche conceptuelle. Les langages de programmation et les APIs existant avant les langages de description comme OpenAPI. C'est pourquoi il existe un grand nombre d'outils permettant d'adapter le code dans un langage donné pour le transformer en description OpenAPI.
+
+Par exemple dans ce cours nous est présenté [SpringDoc](https://springdoc.org/), un framework permettant d'adapter du [code Java](https://github.com/lftraining/LFELL1011-resources/tree/main/chapter-4-examples/code-first-using-springdoc-openapi) en description OpenAPI, ou encore [APIFlask](https://github.com/apiflask/apiflask) un framework Python ayant le même objectif.
+
+On peut ensuite publié sa description à travers différents outils : [Publication de documentation SpringBoot](https://dzone.com/articles/openapi-3-documentation-with-spring-boot)
+
+Dans notre cas nous nous intéresserons à [la partie Python ](https://github.com/lftraining/LFELL1011-resources/tree/main/chapter-4-examples/code-first-using-apiflask)(plus abordable pour moi)
+
+
+## Mise en place du code Python
+
+```bash
+# Recupération du dossier de l'application Python
+git clone https://github.com/lftraining/LFELL1011-resources.git
+cd LFELL1011-resources
+rm -rf .git
+cd chapter-4-examples
+cp -r code-first-using-apiflask ../..
+# J'ai choisi de conserver les autres documents afin d'avoir aussi l'exemple Java à disposition
+
+
+# Utilisation des binaires fournis & suivi des instructions du README.md
+cd ../../code-first-using-apiflask
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Installer les dépendances / paquets python du projet avec pip
+pip install -r requirements.txt
+
+# *Notes:
+# 
+# L'environnement virtuel python permet de créer un dossier isolé du système hôte avec ses propres dépendances Python
+# L'instruction `pip list` repartirait de zéro dans un tel environnement (seul pip 24.0 est présent).
+# 
+# Pour vérifier la possibilité d'en créer : `python3 -m venv --help`
+# Si le paquet n'est pas présent l'installer avec `sudo apt install python3-venv`
+# 
+# Il faut ensuite créer un dossier (dans notre cas le récupérer sur Github) et s'y positionner.
+# On exécutera ensuite les commande de création et d'activation de l'environnement
+# 
+# 
+# Quitter et supprimer l'environnement avec les commandes :
+# 
+# deactivate
+# rm -rf .venv
+```
+
+Nous avons désormais un environnement Python fonctionnel et il est possible de lancer l'environnement
+
+```bash
+# Démarrer le serveur contenant l'API
+flask --app server:app run
+
+# Requêter l'API
+# le paquet `jq` est requis, l'installer avec `apt install` si non présent sur votre système
+curl http://localhost:5000/pets | jq .
+
+# Réponse reçue
+# 
+#   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#                                  Dload  Upload   Total   Spent    Left  Speed
+# 100    87  100    87    0     0  29876      0 --:--:-- --:--:-- --:--:-- 43500
+# [
+#   {
+#     "id": 1,
+#     "name": "Barnaby",
+#     "tag": "Vicious"
+#   },
+#   {
+#     "id": 2,
+#     "name": "Colin",
+#     "tag": "Accountant"
+#   }
+# ]
+
+# Pour regénérer la description OpenAPI (dans son propre terminal)
+flask --app server:app spec
+
+# *Note :
+# 
+# Pour un affichage correct sous WSL il faut avoir un navigateur installé sur sa distribution Linux WSL (ne pas passer par le navigateur de Windows)
+# ex. 
+#   Dans mon cas j'utilise Google Chrome sur Windows => Affichage tronqué
+#   Sur WSL j'ai Firefox. lorsque j'entre l'url http://localhost:5000/docs sur ce navigateur l'affichage est plus agréable
+# 
+# Les paramètres d'affichage dépendent ensuite de la configuration du serveur APIFlask
+```
+
+Pour aller plus loin : [Documentation APIFlask-OpenAPI](https://apiflask.com/openapi/)
+
+## Faire un choix de méthode
+
+Le plus approprié semble être l'approche "code-first" pour les développeurs et "design-first" pour les non développeurs.
+Ainsi, l'OpenAPI Initiative définit le cycle de vie d'une API de la manière suivante :
+
+<div align="center">
+  <img src="images/openapi_apilifecycle.jpg" alt="Imbrication des objets" style="max-width: 100%; height: auto;" >
+</div>
